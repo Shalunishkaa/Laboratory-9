@@ -14,9 +14,9 @@ internal class Program
                 Post p2 = new Post(1000, 52, 127);                
                
                 Console.WriteLine("\nИнформация о первом посте:");
-                p1.PrintPostInfo();
+                p1.Show();
                 Console.WriteLine("\nИнформация о втором посте:");
-                p2.PrintPostInfo();
+                p2.Show();
 
                 // Вывод количества созданных объектов
                 Console.WriteLine($"\nКоличество созданных объектов Post: {Post.PostCount}");
@@ -50,8 +50,8 @@ internal class Program
                 p3 = !p3; // Увеличение количества реакций
                 ++p4; // Увеличение количества просмотров
                 Console.WriteLine("\nПосле унарных операций:");
-                p3.PrintPostInfo();
-                p4.PrintPostInfo();
+                p3.Show();
+                p4.Show();
 
                 // Операции приведения типа
                 bool hasEngagement = (bool)p3;
@@ -64,6 +64,10 @@ internal class Program
                 Console.WriteLine("\nСравнение постов:");
                 Console.WriteLine($"p4 == p5: {p4 == p5}"); // Должно быть true
                 Console.WriteLine($"p3 != p4: {p3 != p4}"); // Должно быть true
+
+                Console.WriteLine("");
+                PostArray p6 = new PostArray(5);
+                p6.Show();
             }
 
             catch (Exception ex)

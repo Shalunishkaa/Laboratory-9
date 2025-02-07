@@ -83,7 +83,7 @@ namespace Laboratory_9
         }
 
         // Метод для вывода информации об объекте
-        public void PrintPostInfo()
+        public void Show()
         {
             Console.WriteLine($"Просмотры: {NumViews}, Комментарии: {NumComments}, Реакции: {NumReactions}");
         }
