@@ -12,26 +12,38 @@ namespace Laboratory_9
 
         Post[] arr;
 
-        private int Length => arr.Length;
         private static int collectionCount;
+        private static int postCount;
 
+        private int Length => arr.Length;
+        public static int PostCount => postCount;
+        public static int CollectionCount => collectionCount;
+
+        // Конструктор без параметров
         public PostArray()
         {
-            arr = new Post[0]; // Инициализируем пустой массив
+            arr = new Post[0];
             collectionCount++;
+            postCount++;
         }
 
-        public PostArray(int Length)
+        // Конструктор с параметрами, заполняющий элементы случайными значениями
+        public PostArray(int length)
         {
-            arr = new Post[Length];
+            arr = new Post[length];
 
-            for (int i = 0; i < Length; i++)
+            for (int i = 0; i < length; i++)
             {
-                arr[i] = new Post(rnd.Next(1000), rnd.Next(50), rnd.Next(20));
+                arr[i] = new Post(rnd.Next(1000), rnd.Next(50), rnd.Next(100));
+                postCount++;
             }
             collectionCount++;
         }
 
+        // Конструктор копирования
+
+
+        // Метод для просмотра элементов массива
         public void Show()
         {
             for (int i = 0; i < arr.Length; i++)
@@ -39,6 +51,23 @@ namespace Laboratory_9
                 Console.WriteLine($"Post {i+1}: ");
                 arr[i].Show();
             }
-        }   
+        }
+
+        // Индексатор для доступа к элементам коллекции
+        public Post this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index < arr.Length)
+                    return arr[index];
+                else throw new Exception("Выход за границы массива");
+            }
+            set
+            {
+                if (index >= 0 && index < arr.Length)
+                    arr[index] = value;
+                else throw new Exception("Выход за границы массива");
+            }
+        }
     }
 }

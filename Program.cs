@@ -11,8 +11,8 @@ internal class Program
                 Console.WriteLine("Задание 1");
                 // Создание объекта класса Post
                 Post p1 = new Post();
-                Post p2 = new Post(1000, 52, 127);                
-               
+                Post p2 = new Post(1000, 52, 127);
+
                 Console.WriteLine("\nИнформация о первом посте:");
                 p1.Show();
                 Console.WriteLine("\nИнформация о втором посте:");
@@ -65,8 +65,11 @@ internal class Program
                 Console.WriteLine($"p4 == p5: {p4 == p5}"); // Должно быть true
                 Console.WriteLine($"p3 != p4: {p3 != p4}"); // Должно быть true
 
-                Console.WriteLine("");
+                Console.WriteLine("Задание 3");
                 PostArray p6 = new PostArray(5);
+                p6.Show();
+                p6[0].NumViews = 1000;
+                Console.WriteLine("\nИзмененный массив");
                 p6.Show();
             }
 
