@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Laboratory_9
 {
@@ -65,12 +66,19 @@ internal class Program
                 Console.WriteLine($"p4 == p5: {p4 == p5}"); // Должно быть true
                 Console.WriteLine($"p3 != p4: {p3 != p4}"); // Должно быть true
 
-                Console.WriteLine("Задание 3");
-                PostArray p6 = new PostArray(5);
-                p6.Show();
-                p6[0].NumViews = 1000;
-                Console.WriteLine("\nИзмененный массив");
-                p6.Show();
+                Console.WriteLine("\nЗадание 3");
+                PostArray arr1 = new PostArray(5);
+                arr1.Show();
+
+                PostArray arr2 = new PostArray(arr1);
+                arr2.Show();
+
+                arr1[0].NumViews = 1000;
+                Console.WriteLine("\nИзмененный массив 1");
+                arr1.Show();
+
+                Console.WriteLine("\nИзмененный массив 2");
+                arr2.Show();
             }
 
             catch (Exception ex)

@@ -40,8 +40,17 @@ namespace Laboratory_9
             collectionCount++;
         }
 
-        // Конструктор копирования
-
+        // Конструктор глубокого клонирования
+        public PostArray(PostArray other)
+        {
+            arr = new Post[other.Length];
+            for (int i = 0; i < other.Length; i++)
+            {
+                arr[i] = new Post(other[i].NumViews, other[i].NumComments, other[i].NumReactions);
+                postCount++;
+            }
+            collectionCount++;
+        }
 
         // Метод для просмотра элементов массива
         public void Show()
