@@ -13,6 +13,7 @@ namespace Laboratory_9
         private int numReactions;
         private double engagementRate;
         private static int postCount;
+        public static int PostCount => postCount;
 
         public int NumViews
         {
@@ -62,8 +63,6 @@ namespace Laboratory_9
             }
         }
 
-        public static int PostCount => postCount;
-
         // Конструктор без параметров
         public Post()
         {
@@ -88,17 +87,19 @@ namespace Laboratory_9
             Console.WriteLine($"Просмотры: {NumViews}, Комментарии: {NumComments}, Реакции: {NumReactions}");
         }
 
-        public void CalculateEngagementRate(int numSubscribers)
+        // Метод для вычисления коэффициента вовлеченности
+        public double CalculateEngagementRate(int numSubscribers)
         {
             if (numSubscribers <= 0) // Предотвращаем деление на ноль или отрицательное число подписчиков
             {
                 EngagementRate = 0;
                 Console.WriteLine("Недопустимое количество подписчиков.");
-                return;
+                return 0;
             }
 
             EngagementRate = ((double)(NumComments + NumReactions) / numSubscribers) * 100;
             EngagementRate = Math.Round(EngagementRate, 2); // Округляем до 0,01
+            return EngagementRate;
         }
 
         // Статическая функция для вычисления коэффициента вовлеченности
@@ -153,12 +154,6 @@ namespace Laboratory_9
         // Перегрузка оператора ==
         public static bool operator ==(Post p1, Post p2)
         {
-            //if (ReferenceEquals(p1, p2))
-            //    return true;
-
-            //if (ReferenceEquals(p1, null) || ReferenceEquals(p2, null))
-            //    return false;
-
             return p1.numViews == p2.numViews &&
                    p1.numComments == p2.numComments &&
                    p1.numReactions == p2.numReactions;
@@ -188,8 +183,6 @@ namespace Laboratory_9
             hash = hash * 31 + NumComments.GetHashCode();
             hash = hash * 31 + NumReactions.GetHashCode();
             return hash;
-
-            //return HashCode.Combine(numViews, numComments, numReactions);
         }
     }
 }

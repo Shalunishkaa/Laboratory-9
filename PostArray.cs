@@ -15,7 +15,7 @@ namespace Laboratory_9
         private static int collectionCount;
         private static int postCount;
 
-        private int Length => arr.Length;
+        public int Length => arr.Length;
         public static int PostCount => postCount;
         public static int CollectionCount => collectionCount;
 
@@ -23,7 +23,6 @@ namespace Laboratory_9
         public PostArray()
         {
             arr = new Post[0];
-            collectionCount++;
             postCount++;
         }
 

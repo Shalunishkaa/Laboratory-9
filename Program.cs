@@ -55,11 +55,9 @@ internal class Program
                 p4.Show();
 
                 // Операции приведения типа
-                bool hasEngagement = (bool)p3;
-                Console.WriteLine($"\nУ поста 3 есть вовлеченность: {hasEngagement}");
+                Console.WriteLine($"\nУ поста 3 есть вовлеченность: {(bool)p3}");
 
-                double reach = (double)p4;
-                Console.WriteLine($"\nОхват поста 4: {reach}%");
+                Console.WriteLine($"\nОхват поста 4: {(double)p4}%");
 
                 // Бинарные операции
                 Console.WriteLine("\nСравнение постов:");
@@ -79,18 +77,52 @@ internal class Program
 
                 Console.WriteLine("\nИзмененный массив 2");
                 arr2.Show();
-            }
 
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+                Console.WriteLine("\nДемонстрация работы индексатора:");
+                if (arr1.Length > 0)
+                {
+                    Console.WriteLine("Запись и получение с существующим индексом (0):");
+                    arr1[0] = new Post(100, 10, 5);
+                    arr1.Show();
+                    Console.WriteLine($"\nПросмотры 1 элемента: {arr1[0].NumViews}");
 
-            finally
+                    //Console.WriteLine("\nЗапись и попытка получения с несуществующим индексом:");
+                    //arr1[arr1.Length] = new Post(1, 2, 3);
+                    //Console.WriteLine("Элемент успешно записан (этого не должно произойти!)");       
+                }
+
+                else
+                {
+                    Console.WriteLine("Массив пуст.");
+                }
+
+                Console.WriteLine($"\nОбщий коэффициент вовлеченности: {CalculateTotalEngagementRate(arr1)}%");
+
+                Console.WriteLine($"\nКоличество объектов Post: {PostArray.PostCount}");
+                Console.WriteLine($"\nКоличество объектов PostArray: {PostArray.CollectionCount}");
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+                finally
+                {
+                    Console.WriteLine("\nКонец работы");
+                }
+            }
+            // Функция, считающая общий коэффициент вовлечённости по постам одного сообщества
+            private static double CalculateTotalEngagementRate(PostArray arr)
             {
-                Console.WriteLine("\nКонец работы");
+                double totalEngagement = 0;
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    totalEngagement += arr[i].CalculateEngagementRate(1000);
+                }
+                return Math.Round(totalEngagement, 2);
             }
         }
     }
-}
+
 
