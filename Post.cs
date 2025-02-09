@@ -81,23 +81,13 @@ namespace Laboratory_9
             postCount++;
         }
 
-        // Метод для вывода информации об объекте
-        public void Show()
-        {
-            Console.WriteLine($"Просмотры: {NumViews}, Комментарии: {NumComments}, Реакции: {NumReactions}");
-        }
-
         // Метод для вычисления коэффициента вовлеченности
         public double CalculateEngagementRate(int numSubscribers)
         {
             if (numSubscribers <= 0) // Предотвращаем деление на ноль или отрицательное число подписчиков
-            {
-                EngagementRate = 0;
-                Console.WriteLine("Недопустимое количество подписчиков.");
-                return 0;
-            }
+                throw new Exception("Недопустимое количество подписчиков.");
 
-            EngagementRate = ((double)(NumComments + NumReactions) / numSubscribers) * 100;
+            EngagementRate = ((double)(NumViews + NumComments + NumReactions) / numSubscribers) * 100;
             EngagementRate = Math.Round(EngagementRate, 2); // Округляем до 0,01
             return EngagementRate;
         }
@@ -106,22 +96,12 @@ namespace Laboratory_9
         public static double CalculateEngagementRate(Post p, int numSubscribers)
         {
             if (numSubscribers <= 0) // Предотвращаем деление на ноль
-            {
-                p.EngagementRate = 0;
-                Console.WriteLine("Недопустимое количество подписчиков.");
-                return 0; // Или другое подходящее значение
-            }
+                throw new Exception("Недопустимое количество подписчиков.");
 
-            p.EngagementRate = ((double)(p.NumComments + p.NumReactions) / numSubscribers) * 100;
+            p.EngagementRate = ((double)(p.NumViews + p.NumComments + p.NumReactions) / numSubscribers) * 100;
             p.EngagementRate = Math.Round(p.EngagementRate, 2); // Округляем до 0,01
 
             return p.EngagementRate;
-        }
-
-        // Метод для вывода информации об вовлеченности объекта
-        public void PrintEngagementInfo()
-        {
-            Console.WriteLine($" {EngagementRate}");
         }
 
         // Перегрузка унарного оператора !

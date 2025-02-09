@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Laboratory_9
 {
-    internal class PostArray
+    public class PostArray
     {
         static Random rnd = new Random();
 
@@ -49,16 +49,6 @@ namespace Laboratory_9
                 postCount++;
             }
             collectionCount++;
-        }
-
-        // Метод для просмотра элементов массива
-        public void Show()
-        {
-            for (int i = 0; i < arr.Length; i++)
-            {
-                Console.WriteLine($"Post {i+1}: ");
-                arr[i].Show();
-            }
         }
 
         // Индексатор для доступа к элементам коллекции
