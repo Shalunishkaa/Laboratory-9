@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace Laboratory_9
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -125,7 +125,7 @@ namespace Laboratory_9
             }
         }
         // Функция, считающая общий коэффициент вовлечённости по постам одного сообщества
-        private static double CalculateTotalEngagementRate(PostArray arr)
+        public static double CalculateTotalEngagementRate(PostArray arr)
         {
             double totalEngagement = 0;
             for (int i = 0; i < arr.Length; i++)
